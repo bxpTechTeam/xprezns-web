@@ -18,7 +18,11 @@ def main():
     with open("schools.csv") as csv_file:
         reader = csv.reader(csv_file, delimiter=',')
         f = open("logs", "w")
+        count = 0
         for abbrev, name in reader:
+            count += 1
+            if count == 1:
+                next
             password = generate_password()
             passwd = hashlib.sha512(password.encode('utf-8')).hexdigest()
             db.execute("INSERT INTO schools (abbrev, name, passwd) VALUES(:abbrev, :name, :passwd)", {"abbrev": abbrev, "name": name, "passwd":passwd})
