@@ -1,0 +1,28 @@
+#!/usr/bin/python
+import os
+import sqlalchemy as sqla
+import sqlalchemy.orm as sqlo
+import csv
+import hashlib
+import string
+import random
+
+def main():
+    engine = sqla.create_engine("postgres:///portal")
+    db = sqlo.scoped_session(sqlo.sessionmaker(bind=engine))
+
+    with open("events.csv") as csv_file:
+        reader = csv.reader(csv_file, delimiter=',')
+        f = open("events_logs", "w")
+        count = 0
+        for name, description, venue, start_time, end_time in reader:
+            if count == 0:
+                count += 1
+                continue
+            db.execute("INSERT INTO events (name, description, venue, start_time, end_time) VALUES(:name, :description, :venue, :start_time, :end_time)", {"name": name, "description":description, "venue":venue, "start_time":start_time, "end_time":end_time})
+            f.write(f"Added new Entry: Name: %15s | Description %20s | Venue %15s | Start Time %10s | End Time %10s \n" % (name, description, venue, start_time, end_time))
+
+    db.commit()
+
+if __name__ == "__main__":
+    main()
