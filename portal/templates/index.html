@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+	Events
+{% endblock %}
+
+{% block body %}
+	<h1> LIST </h1>
+
+	<ol>
+		{% for event in events %}
+		<li> {{ event.name }} : {{ event.description }} </li>
+		{% endfor %}
+	</ol>
+	
+{% endblock %}

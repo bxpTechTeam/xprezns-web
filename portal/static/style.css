@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300&display=swap');
+
+.montserrat-font{
+	font-family: 'Montserrat', sans-serif;
+}
+
+/******************* FONTS DONE ^^^ ****************/
+
+form{
+	padding: 3em;
+	margin: 5em;
+	margin-top: 5em;
+	font-family: 'Montserrat', sans-serif;
+}
