@@ -12,14 +12,16 @@
 {% endblock %}
 
 {% block body %}
+	<div class="row">
 	{% for event in events %}
-		<div class="row event-card">
-			<div class="col-md-8 mx-auto text-left montserrat-font">
-				{{ event.name }} : {{ event.description }}
-			</div>
-			<div class="col-md-4 mx-auto">
-				<button data-name="{{ event.name }}"> Apply </button>
+		<div class="col-md-4" style="margin-top: 0.2em;">
+			<div class="card">
+				<div class="card-body">
+					<p class="card-text">{{event.name}} : {{ event.description }} </p>
+					<button data-event="{{ event.name }}" class="btn btn-primary"> Apply </button>
+				</div>
 			</div>
 		</div>
 	{% endfor %}
+	</div>
 {% endblock %}

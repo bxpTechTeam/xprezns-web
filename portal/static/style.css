@@ -1,15 +1,22 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap');
 
 .montserrat-font{
 	font-family: 'Montserrat', sans-serif;
 }
 
 /******************* FONTS DONE ^^^ ****************/
+body{
+	background-image: url("../static/light-grey-terrazzo.png");
+}
 
 
-.event-card{
-	border: 1px solid black;
+.event-card div{
+	padding: auto;
+}
 
+.applied{
+	background-color: #a2a9b5;
+	color: white;
 }
 
 form{
