@@ -40,6 +40,11 @@ def login():
 		failed = True
 		return redirect(url_for('login_page'))
 	
+@app.route('/registration')
+def registration():
+	events = Event.query.all()
+	return render_template('register.html', events=events)
+	
 	
 
 ############# ERROR HANDLERS ###############

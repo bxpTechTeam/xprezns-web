@@ -20,17 +20,14 @@ class School(db.Model):
 class Venue(db.Model):
     __tablename__ = 'venues'
     name = db.Column(db.String, primary_key=True)
-    place = db.Column(db.String, nullable=False)
-
-
+   
 class Event(db.Model):
     __tablename__ = 'events'
     name = db.Column(db.String, primary_key=True)
     description = db.Column(db.String, nullable=False)
     venue = db.Column(db.String, db.ForeignKey("venues.name"), nullable=False)
-    start_time = db.Column(db.String, nullable=False)
-    end_time = db.Column(db.String, nullable=False)
-
+    timings = db.Column(db.String, nullable=False)
+  
 
 class EventRegistrationEntry(db.Model):
     __tablename__ = 'events_registration'

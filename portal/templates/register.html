@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+	Registration Portal
+{% endblock %}
+
+
+{% block imports %}
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='register.js')}}"></script>
+{% endblock %}
+
+{% block body %}
+	{% for event in events %}
+		<div class="row event-card">
+			<div class="col-md-8 mx-auto text-left montserrat-font">
+				{{ event.name }} : {{ event.description }}
+			</div>
+			<div class="col-md-4 mx-auto">
+				<button data-name="{{ event.name }}"> Apply </button>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

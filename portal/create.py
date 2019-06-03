@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from flask import Flask, render_template, request
 from models import *
 import csv
@@ -38,13 +40,12 @@ def populate_venues():
 	with open('source-csvs/venues.csv') as f:
 		reader = csv.reader(f, delimiter=',')
 		count = 0
-		for name, place in reader:
-			logs.append([name, place])
+		for name in reader:
+			logs.append(name)
 			if count == 0:
 				count += 1
 				continue
-			venue = Venue(name=name,
-					  place=place)
+			venue = Venue(name=name[0])
 			db.session.add(venue)
 		db.session.commit()
 		log_file = open("logs/venues_logs.csv", 'w')
@@ -56,16 +57,15 @@ def populate_events():
 	with open('source-csvs/events.csv') as f:
 		reader = csv.reader(f, delimiter=',')
 		count = 0
-		for name, description, venue, start_time, end_time in reader:
-			logs.append([name, description, venue, start_time, end_time])
+		for name, description, venue, timings in reader:
+			logs.append([name, description, venue, timings])
 			if count == 0:
 				count += 1
 				continue
 			event = Event(name=name,
 					 description=description,
 					 venue=venue,
-					 start_time=start_time,
-					 end_time=end_time)
+					 timings=timings)
 			db.session.add(event)
 		db.session.commit()
 		log_file = open("logs/events_logs.csv", 'w')
@@ -75,8 +75,8 @@ def populate_events():
 
 def main():
 	db.create_all()
-	populate_schools()
 	populate_venues()
+	populate_schools()
 	populate_events()
 
 

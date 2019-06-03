@@ -6,6 +6,12 @@
 
 /******************* FONTS DONE ^^^ ****************/
 
+
+.event-card{
+	border: 1px solid black;
+
+}
+
 form{
 	padding: 3em;
 	margin: 5em;
