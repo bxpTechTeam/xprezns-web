@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from models import *
 from flask_socketio import SocketIO
-from flask_login import LoginManager, UserMixin, login_required, login_user, current_user
+from flask_login import LoginManager, UserMixin, login_required, login_user, current_user, logout_user
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///portal'
@@ -13,7 +13,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
-@app.route('/')
+@app.route('/index')
 def index():
     events = Event.query.all()
     return render_template('index.html', events=events)
@@ -49,7 +49,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('/'))
+    return redirect(url_for('index'))
 
 @app.route('/registration')
 @login_required
@@ -59,7 +59,7 @@ def registration():
     registered = EventRegistrationEntry.query.filter_by(school_name = current_user.abbrev)
     for row in registered:
         events.remove(Event.query.get(row.event_name))
-    return render_template('register.html', events=events)
+    return render_template('register.html', events=events, school = current_user.abbrev)
 
 @socketio.on("register")
 @login_required

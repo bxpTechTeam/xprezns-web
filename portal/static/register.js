@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
 
       // Adding shadow property to the event card divs
-      document.querySelectorAll('.event-card').forEach(div => {
+      document.querySelectorAll('.card').forEach(div => {
             div.onmouseover = () => {
                   div.className += ' shadows p-3 mb-5 bg-white rounded';
             }
       })
-      document.querySelectorAll('.event-card').forEach(div => {
+      document.querySelectorAll('.card').forEach(div => {
             div.onmouseout = () => {
                   div.classList.remove('shadows', 'p-3', 'mb-5', 'bg-white', 'rounded');
             }
