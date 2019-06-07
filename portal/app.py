@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from flask import Flask, render_template, request, redirect, url_for
 from models import *
 from flask_socketio import SocketIO
@@ -8,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres:///portal'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'DBBRegSecretKey'
 db.init_app(app)
-socketio = SocketIO(app)
+socketio = SocketIO(app, async_mode="gevent")
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -74,3 +76,9 @@ def register(data):
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html'),404
+
+
+
+
+if __name__ == "__main__":
+    app.run()

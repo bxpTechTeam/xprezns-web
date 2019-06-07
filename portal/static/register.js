@@ -20,11 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // Configuring the apply buttons to register for the event when connected
       socket.on('connect', () => {
             // Each button should emit a 'register' event
-            document.querySelectorAll('button').forEach(button => {
+            document.querySelectorAll('.btn').forEach(button => {
                   button.onclick = () => {
                         const event = button.dataset.event;
                         socket.emit('register', {'event': event});
                         button.disabled = true;
+			  console.log(event);
                   }
             })
 
