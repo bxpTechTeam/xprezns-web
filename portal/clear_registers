@@ -1,4 +1,0 @@
-#!/usr/bin/sh
-psql -d portal -c "delete from events_registration"
-psql -d portal -c "alter sequence events_registration_id_seq restart with 1;"
-

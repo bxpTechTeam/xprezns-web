@@ -1,2 +1,0 @@
-# xprezns-web
-The website
