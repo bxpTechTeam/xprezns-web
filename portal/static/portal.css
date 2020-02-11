@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+  
+  }
+  body
+  {
+    font-family: sans-serif;
+    background: url('../assets/Yqh5Awo-black-wallpaper-1080p.jpg');
+    background-size: cover;
+  }
+  #nav-bar
+  {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .navbar{
+    background-image: linear-gradient(to right, #55FF55,#ff79ff,#00b0ff);
+    padding: 0 !important;
+    animation: headcolor 2s infinite;
+  
+  }
+  @keyframes headcolor{
+    25%{
+      background-image: linear-gradient(to right, #55FF55,#ff79ff,#00b0ff);
+    }
+    50%{
+      background-image: linear-gradient(to right,#00b0ff, #55FF55,#ff79ff);
+    }
+    75%{
+      background-image: linear-gradient(to right,#ff79ff,#00b0ff, #55FF55);
+    }
+  
+  }
+  .navbar-brand{
+    color: #27f0be !important;
+    font-weight: 600;
+}
+  .navbar-nav li{
+    padding: 0 10px;
+  }
+  .navbar-nav li a{
+    color: #fff !important;
+    font-weight: 600;
+    float: right;
+    text-align: left;
+  }
+  .fa-bars{
+    color: #fff;
+    font-size: 30px !important;
+  }
+  .navbar-toggler{
+    outline: none !important;
+  }
